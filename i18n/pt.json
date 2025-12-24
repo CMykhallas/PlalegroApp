@@ -1,0 +1,11 @@
+{
+    "welcome": "🎉 Bem-vindo ao Play Learn Grow!",
+    "chooseGame": "Escolha um jogo para começar:",
+    "games": {
+      "numbers": "Números",
+      "colors": "Cores",
+      "letters": "Letras"
+    },
+    "notFound": "Jogo não encontrado. Tente novamente."
+  }
+  

@@ -1,0 +1,89 @@
+name: CI - Play Learn Grow
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+
+# Cancela builds anteriores se um novo commit for enviado no mesmo PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # JOB 1: Linting e análise estática
+  lint:
+    name: Code Quality (Detekt & Ktlint)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: "gradle"
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Run Ktlint (Style Check)
+        run: ./gradlew ktlintCheck --no-daemon
+
+      - name: Run Detekt (Static Analysis)
+        run: ./gradlew detekt --no-daemon
+
+  # JOB 2: Build + Testes + Cobertura
+  build_and_test:
+    name: Build & Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: "gradle"
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      # Compila, roda testes e gera relatório Jacoco
+      - name: Run Tests & Build Debug
+        run: ./gradlew clean build test jacocoTestReport assembleDebug --no-daemon
+
+      # Publica relatórios de testes (JUnit XML/HTML)
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            **/build/reports/tests/
+            **/build/test-results/
+
+      # Publica relatório de cobertura Jacoco
+      - name: Upload Coverage Report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage
+          path: core/build/reports/jacoco/test/html/
+
+      # Integração com Codecov (gera badge de cobertura)
+      - name: Upload coverage to Codecov
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: core/build/reports/jacoco/test/jacocoTestReport.xml
+          fail_ci_if_error: true

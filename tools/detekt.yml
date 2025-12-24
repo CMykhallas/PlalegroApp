@@ -1,0 +1,25 @@
+build:
+  maxIssues: 0
+  excludeCorrectable: false
+
+processors:
+  active: true
+
+config:
+  validation: true
+
+style:
+  MagicNumber:
+    active: true
+  NamingConventionViolation:
+    active: true
+  WildcardImport:
+    active: true
+
+complexity:
+  LongMethod:
+    active: true
+    threshold: 30
+  LargeClass:
+    active: true
+    threshold: 200

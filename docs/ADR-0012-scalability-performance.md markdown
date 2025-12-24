@@ -1,0 +1,37 @@
+# ADR-0012: Estratégia de Escalabilidade e Performance
+
+## Status
+Aceito
+
+## Contexto
+O projeto Play Learn Grow precisa suportar um número crescente de usuários (pais, professores e crianças) sem comprometer a experiência.  
+Com o aumento da base de dados e da complexidade dos jogos, é essencial garantir que o sistema seja escalável e mantenha alta performance.
+
+## Decisão
+Adotar uma estratégia de escalabilidade e performance baseada em:
+- **Arquitetura modular**: serviços independentes para frontend, backend e banco de dados.  
+- **Escalabilidade horizontal**: uso de Kubernetes para aumentar instâncias de serviços conforme demanda.  
+- **CDN global**: distribuição de conteúdo estático (imagens, assets, jogos) via Vercel CDN.  
+- **Caching**: Redis para cache de dados frequentes e sessões.  
+- **Otimização de consultas**: índices no PostgreSQL e uso de queries otimizadas.  
+- **Testes de carga**: execução periódica de stress tests para validar limites do sistema.  
+
+## Consequências
+- **Positivas**:
+  - Sistema preparado para crescimento exponencial de usuários.  
+  - Experiência fluida mesmo em cenários de alta demanda.  
+  - Redução de custos com uso eficiente de recursos.  
+- **Negativas**:
+  - Maior complexidade de infraestrutura.  
+  - Necessidade de monitoramento contínuo de performance.  
+
+## Alternativas consideradas
+- **Escalabilidade vertical (mais recursos em um único servidor)**: simples, mas limitada e cara.  
+- **Sem caching**: mais fácil de implementar, mas com performance inferior.  
+- **Infraestrutura fixa**: inviável para crescimento e picos de uso.  
+
+## Data
+2025-12-23
+
+## Autores
+Equipe Play Learn Grow

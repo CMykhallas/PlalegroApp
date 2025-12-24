@@ -1,0 +1,37 @@
+# ADR-0006: Estratégia de Acessibilidade Digital para Crianças
+
+## Status
+Aceito
+
+## Contexto
+O público-alvo do projeto Play Learn Grow são crianças em idade pré-escolar, incluindo aquelas com necessidades especiais.  
+É essencial garantir que os jogos e conteúdos educativos sejam acessíveis para todos, independentemente de limitações visuais, auditivas, motoras ou cognitivas.  
+A acessibilidade digital é também um requisito pedagógico e legal em muitos países.
+
+## Decisão
+Adotar uma estratégia de acessibilidade baseada em:
+- **Design inclusivo**: uso de cores contrastantes, fontes legíveis e ícones claros.  
+- **Compatibilidade com leitores de tela**: uso de semântica HTML correta e atributos `aria-label`.  
+- **Navegação por teclado**: todos os elementos interativos acessíveis via `Tab`.  
+- **Feedback multimodal**: sons, vibrações e animações leves para reforçar interações.  
+- **Guia de acessibilidade** documentado em `docs/accessibility-guide.md`.
+
+## Consequências
+- **Positivas**:
+  - Inclusão de crianças com diferentes necessidades.  
+  - Conformidade com padrões internacionais (WCAG 2.1).  
+  - Melhor experiência de usuário para todos.  
+- **Negativas**:
+  - Maior esforço inicial de design e desenvolvimento.  
+  - Necessidade de testes contínuos com ferramentas de acessibilidade.
+
+## Alternativas consideradas
+- **Ignorar acessibilidade**: mais rápido no início, mas exclui parte do público e gera riscos legais.  
+- **Acessibilidade parcial**: apenas contraste e fontes legíveis, mas sem suporte completo a leitores de tela.  
+- **Ferramentas externas de acessibilidade automática**: úteis, mas não substituem boas práticas de design inclusivo.
+
+## Data
+2025-12-23
+
+## Autores
+Equipe Play Learn Grow

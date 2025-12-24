@@ -1,0 +1,24 @@
+{
+    "version": "1.0.0",
+    "packs": [
+      {
+        "id": "numbers",
+        "title": "Números",
+        "description": "Aprenda a contar de 1 a 10",
+        "languages": ["pt-BR", "en"]
+      },
+      {
+        "id": "colors",
+        "title": "Cores",
+        "description": "Identifique cores básicas",
+        "languages": ["pt-BR", "en"]
+      },
+      {
+        "id": "letters",
+        "title": "Letras",
+        "description": "Reconheça o alfabeto",
+        "languages": ["pt-BR", "en"]
+      }
+    ]
+  }
+  

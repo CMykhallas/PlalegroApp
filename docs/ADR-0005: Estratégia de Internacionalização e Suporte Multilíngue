@@ -1,0 +1,29 @@
+# ADR-0005: Estratégia de Internacionalização e Suporte Multilíngue
+
+## Status
+Aceito
+
+## Contexto
+O projeto Play Learn Grow precisa alcançar crianças em diferentes países e culturas.  
+Para garantir inclusão e acessibilidade, é necessário oferecer suporte multilíngue, permitindo que os jogos educativos sejam traduzidos e adaptados para diversos idiomas.
+
+## Decisão
+Adotar uma estratégia baseada em:
+- Arquivos de tradução JSON separados por idioma (`pt.json`, `en.json`, `es.json`).
+- Biblioteca de i18n no frontend (Next.js) para carregar traduções dinamicamente.
+- Idioma padrão: `pt-BR`, com fallback para `en`.
+
+## Consequências
+- **Positivas**: inclusão global, fácil expansão de idiomas, manutenção simples.  
+- **Negativas**: necessidade de manter traduções atualizadas, esforço inicial maior.
+
+## Alternativas consideradas
+- Tradução manual embutida no código → difícil de manter.  
+- Serviços externos de tradução automática → risco de inconsistência pedagógica.  
+- Suporte apenas a um idioma → limita alcance global.
+
+## Data
+2025-12-23
+
+## Autores
+Equipe Play Learn Grow

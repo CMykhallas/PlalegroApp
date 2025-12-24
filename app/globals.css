@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paleta de cores do projeto Play Learn Grow */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Cores temáticas */
+  --color-primary: #2563eb;   /* Azul educativo */
+  --color-secondary: #facc15; /* Amarelo alegre */
+  --color-accent: #ef4444;    /* Vermelho para destaque */
+  --color-success: #22c55e;   /* Verde para acertos */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --color-primary: #3b82f6;
+    --color-secondary: #fde047;
+    --color-accent: #f87171;
+    --color-success: #4ade80;
+  }
+}
+
+/* Estilo global do corpo */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Comic Neue", "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Classes utilitárias extras */
+.btn {
+  @apply px-4 py-2 rounded-lg font-semibold transition-colors;
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.btn:hover {
+  background-color: var(--color-accent);
+}
+
+.card {
+  @apply p-6 rounded-lg shadow-md;
+  background-color: var(--color-secondary);
+  color: var(--foreground);
+}

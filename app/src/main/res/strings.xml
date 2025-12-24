@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Play Learn Grow</string>
+    <string name="title_home">Início</string>
+    <string name="title_settings">Configurações</string>
+    <string name="title_about">Sobre</string>
+    <string name="btn_save">Salvar</string>
+    <string name="btn_back">Voltar</string>
+</resources>
