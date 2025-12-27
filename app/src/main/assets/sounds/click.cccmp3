@@ -1,0 +1,18 @@
+package org.playlearn.core.util
+
+import android.content.Context
+import android.media.MediaPlayer
+
+object SoundPlayer {
+    private var mediaPlayer: MediaPlayer? = null
+
+    fun playClick(context: Context) {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer().apply {
+            val afd = context.assets.openFd("sounds/click.mp3")
+            setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+            prepare()
+            start()
+        }
+    }
+}

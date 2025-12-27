@@ -1,0 +1,25 @@
+{
+    "id": "quiz_math_basic",
+    "title": "Quiz de Matemática Básica",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "Quanto é 2 + 3?",
+        "options": ["4", "5", "6"],
+        "answer": "5"
+      },
+      {
+        "id": "q2",
+        "question": "Qual é o sucessor de 7?",
+        "options": ["6", "8", "9"],
+        "answer": "8"
+      },
+      {
+        "id": "q3",
+        "question": "Qual é o resultado de 10 - 4?",
+        "options": ["5", "6", "7"],
+        "answer": "6"
+      }
+    ]
+  }
+  

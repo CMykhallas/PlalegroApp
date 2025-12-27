@@ -1,0 +1,102 @@
+package org.playlearn.core.ml
+package org.playlearn.ui.demo
+
+import android.content.Context
+import android.media.MediaPlayer
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.unit.dp
+import org.playlearn.core.ml.PlayLearnModel
+import org.playlearn.core.util.SoundPlayer
+
+@Composable
+fun DemoAssetsScreen() {
+    val context = LocalContext.current
+    var htmlToShow by remember { mutableStateOf("terms_of_service.html") }
+    var predictionResult by remember { mutableStateOf<FloatArray?>(null) }
+
+    Column(Modifier.fillMaxSize().padding(16.dp)) {
+        Text("Demonstração de Assets", style = MaterialTheme.typography.titleLarge)
+        Spacer(Modifier.height(12.dp))
+
+        // Botões para alternar HTML
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Button(onClick = { htmlToShow = "terms_of_service.html" }) {
+                Text("Termos de Serviço")
+            }
+            Button(onClick = { htmlToShow = "privacy_policy.html" }) {
+                Text("Política de Privacidade")
+            }
+        }
+
+        Spacer(Modifier.height(12.dp))
+
+        // WebView para exibir HTML
+        AndroidView(
+            factory = { ctx ->
+                WebView(ctx).apply {
+                    webViewClient = WebViewClient()
+                    settings.javaScriptEnabled = true
+                    loadUrl("file:///android_asset/html/$htmlToShow")
+                }
+            },
+            modifier = Modifier.weight(1f)
+        )
+
+        Spacer(Modifier.height(12.dp))
+
+        // Botão que toca som
+        Button(onClick = { SoundPlayer.playClick(context) }) {
+            Text("Tocar Som de Click")
+        }
+
+        Spacer(Modifier.height(12.dp))
+
+        // Botão que roda modelo ML
+        Button(onClick = {
+            val model = PlayLearnModel(context)
+            val result = model.predict(floatArrayOf(0.5f, 0.2f, 0.8f))
+            predictionResult = result
+        }) {
+            Text("Rodar Modelo ML")
+        }
+
+        predictionResult?.let { res ->
+            Spacer(Modifier.height(8.dp))
+            Text("Resultado ML: ${res.joinToString(", ")}")
+        }
+    }
+}
+
+import android.content.Context
+import org.tensorflow.lite.Interpreter
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
+
+class PlayLearnModel(context: Context) {
+    private val interpreter: Interpreter
+
+    init {
+        val modelStream = context.assets.open("ml/playlearn_model.tflite")
+        val modelBytes = modelStream.readBytes()
+        val buffer = ByteBuffer.allocateDirect(modelBytes.size)
+        buffer.order(ByteOrder.nativeOrder())
+        buffer.put(modelBytes)
+        interpreter = Interpreter(buffer)
+    }
+
+    fun predict(input: FloatArray): FloatArray {
+        val output = Array(1) { FloatArray(3) } // exemplo: 3 classes
+        interpreter.run(arrayOf(input), output)
+        return output[0]
+    }
+}
+val model = PlayLearnModel(context)
+val result = model.predict(floatArrayOf(0.5f, 0.2f, 0.8f))
+println("Resultado: ${result.joinToString()}")

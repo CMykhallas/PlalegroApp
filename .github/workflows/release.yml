@@ -1,3 +1,6 @@
+- name: Decode Play Credentials
+  run: echo "${{ secrets.PLAY_CREDENTIALS_JSON }}" > play-credentials.json
+
 name: Release - Play Learn Grow
 
 on:

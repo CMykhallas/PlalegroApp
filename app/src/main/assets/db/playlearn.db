@@ -1,0 +1,31 @@
+-- Schema inicial para playlearn.db
+CREATE TABLE users (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    locale TEXT NOT NULL
+);
+
+CREATE TABLE contents (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    level INTEGER NOT NULL,
+    status TEXT NOT NULL,
+    metadata TEXT
+);
+
+CREATE TABLE preferences (
+    key TEXT PRIMARY KEY,
+    locale TEXT NOT NULL,
+    darkTheme INTEGER NOT NULL,
+    notificationsEnabled INTEGER NOT NULL
+);
+
+-- Dados iniciais
+INSERT INTO users (id, name, age, locale) VALUES ('u1', 'Alice', 7, 'pt-MZ');
+
+INSERT INTO contents (id, title, level, status, metadata)
+VALUES ('c1', 'Matemática Básica', 1, 'AVAILABLE', '{"topic":"math","difficulty":"easy"}');
+
+INSERT INTO preferences (key, locale, darkTheme, notificationsEnabled)
+VALUES ('default', 'pt-MZ', 0, 1);

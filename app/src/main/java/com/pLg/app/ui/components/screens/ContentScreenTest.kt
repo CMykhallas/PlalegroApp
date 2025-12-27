@@ -1,0 +1,30 @@
+package com.pLg.app.ui.componentes.screens
+
+import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.*
+import com.pLg.app.ui.content.ContentScreen
+import com.pLg.app.ui.viewmodel.ContentViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import org.junit.Rule
+import org.junit.Test
+
+class ContentScreenTest {
+
+    @get:Rule val composeRule = createComposeRule()
+
+    @Test
+    fun content_screen_displays_items_and_buttons() {
+        val fakeViewModel = object : ContentViewModel(FakeContentRepo()) {}
+        fakeViewModel.contents = MutableStateFlow(listOf(
+            com.pLg.core.model.Content("c1", "Matemática Básica", 1, "AVAILABLE", emptyMap())
+        ))
+
+        composeRule.setContent {
+            ContentScreen(viewModel = fakeViewModel, onProfile = {}, onPrefs = {})
+        }
+
+        composeRule.onNodeWithText("Matemática Básica").assertIsDisplayed()
+        composeRule.onNodeWithText("Perfil").assertIsDisplayed()
+        composeRule.onNodeWithText("Preferências").assertIsDisplayed()
+    }
+}

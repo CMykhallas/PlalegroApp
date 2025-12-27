@@ -1,0 +1,19 @@
+{
+    "id": "lesson2",
+    "title": "Ciências Naturais",
+    "level": 2,
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "O Corpo Humano",
+        "content": "O corpo humano é formado por sistemas como o digestivo e o respiratório."
+      },
+      {
+        "id": "sec2",
+        "title": "Plantas",
+        "content": "As plantas produzem oxigênio através da fotossíntese."
+      }
+    ],
+    "estimatedTimeMinutes": 20
+  }
+  

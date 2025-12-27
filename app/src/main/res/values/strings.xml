@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PlayLearn</string>
+    <string name="welcome_message">Bem-vindo ao PlayLearn!</string>
+    <string name="login_button">Entrar</string>
+    <string name="logout_button">Sair</string>
+</resources>
+Text(text = stringResource(R.string.welcome_message))
+Image(
+    painter = painterResource(R.drawable.ic_profile),
+    contentDescription = stringResource(R.string.profile_picture),
+    modifier = Modifier.size(64.dp)
+)
+
+Button(
+    onClick = { /* ... */ },
+    modifier = Modifier.semantics { contentDescription = "Botão de login" }
+) {
+    Text(stringResource(R.string.login_button))
+}

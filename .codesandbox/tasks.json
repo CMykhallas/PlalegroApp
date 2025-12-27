@@ -48,6 +48,11 @@
         "clone": false,
         "resume": false
       }
+    },
+    "git clone https://github.com/CMykhallas/PlalegroApp.git cd PlalegroApp": {
+      "name": "git clone https://github.com/CMykhallas/PlalegroApp.git cd PlalegroApp",
+      "command": "git clone https://github.com/CMykhallas/PlalegroApp.git cd PlalegroApp",
+      "runAtStart": true
     }
   }
 }

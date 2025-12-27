@@ -1,0 +1,19 @@
+{
+    "id": "lesson1",
+    "title": "Introdução à Matemática",
+    "level": 1,
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "Números Naturais",
+        "content": "Os números naturais começam em 0 e vão até o infinito."
+      },
+      {
+        "id": "sec2",
+        "title": "Operações Básicas",
+        "content": "Adição e subtração são as primeiras operações que aprendemos."
+      }
+    ],
+    "estimatedTimeMinutes": 15
+  }
+  

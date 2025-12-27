@@ -1,0 +1,27 @@
+{
+    "contents": [
+      {
+        "id": "c1",
+        "title": "Matemática Básica",
+        "level": 1,
+        "status": "AVAILABLE",
+        "metadata": {
+          "topic": "math",
+          "difficulty": "easy",
+          "estimatedTimeMinutes": 15
+        }
+      },
+      {
+        "id": "c2",
+        "title": "Ciências Naturais",
+        "level": 2,
+        "status": "LOCKED",
+        "metadata": {
+          "topic": "science",
+          "difficulty": "medium",
+          "estimatedTimeMinutes": 20
+        }
+      }
+    ]
+  }
+  

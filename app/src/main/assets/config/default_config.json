@@ -1,0 +1,11 @@
+{
+    "appName": "PlayLearn",
+    "version": "1.0.0",
+    "supportedLocales": ["pt-MZ", "en-US"],
+    "defaultLocale": "pt-MZ",
+    "features": {
+      "darkTheme": true,
+      "notificationsEnabled": true
+    }
+  }
+  
